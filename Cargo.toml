@@ -1,0 +1,32 @@
+[package]
+name = "base-inf"
+version = "0.1.0"
+edition = "2021"
+description = "Based on Infinity"
+authors = ["sbchild <sbchild0@gmail.com>"]
+repository = "https://github.com/sb-child/base-inf"
+license = "MPL-2.0"
+
+[dependencies]
+capitalize = "0.3.4"
+jieba-rs = { git = "https://github.com/messense/jieba-rs", branch = "main", features = [
+    "textrank",
+    "tfidf",
+] }
+num_enum = "0.7.3"
+petgraph = { version = "0.6.5", features = ["all", "serde"] }
+rayon = "1.10.0"
+slab_tree = "0.3.2"
+strum = { version = "0.26.3", features = ["derive"] }
+unicode-properties = { version = "0.1.2", features = [
+    "general-category",
+    "emoji",
+] }
+
+[profile.release]
+opt-level = "s"
+debug = false
+lto = true
+panic = "abort"
+codegen-units = 1
+strip = true
